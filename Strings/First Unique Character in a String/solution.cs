@@ -1,33 +1,24 @@
-using System;
-using System.Linq;
-using System.Collections.Generic;
+public class Solution {
+    public int FirstUniqChar(string s) {
+        Dictionary<char,int> dict = new Dictionary<char,int>();
+    List<char> removedLetters = new List<char>();
 
-public class HelloWorld
-{
-    public static int FirstUniqChar(string s)
-    {
-        Dictionary<char, int> dict = new Dictionary<char, int>();
-        List<char> removedLetters = new List<char>();
-
-        for (int i = 0; i < s.Length; i++)
-        {
-            char ch = s[i];
-
-            if (!dict.ContainsKey(ch))
-            {
-                if (!removedLetters.Contains(ch))
-                {
-                    dict[ch] = i;
-                }
+    for (int i = 0; i < s.Length; i++) {
+        if (!dict.ContainsKey(s[i])) {
+            if (!removedLetters.Contains(s[i])) {
+                dict[s[i]] = i;
             }
-            else
-            {
-                dict.Remove(ch);
-                removedLetters.Add(ch);
-            }
+        } else {
+            dict.Remove(s[i]);
+            removedLetters.Add(s[i]);
         }
+    }
 
-        int index = dict.First().Value;
-        return index;
+    foreach (char ch in s) {
+        if (dict.ContainsKey(ch)) {
+            return dict[ch];
+        }
+    }
+    return -1;
     }
 }
