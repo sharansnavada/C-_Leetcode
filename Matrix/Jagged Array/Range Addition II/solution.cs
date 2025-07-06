@@ -16,6 +16,14 @@ foreach (var op in ops)
     minCol = Math.Min(minCol, op[1]);
 }
 
+// Why Multiply minRow × minCol?
+
+// Each operation only affects part of the matrix:
+// 	•	op[0] rows and op[1] columns.
+
+// So the only cells that are incremented in every operation are the cells that are inside all the op rectangles.
+// This is the overlapping area — and overlapping area = minimum of all op[0]s and all op[1]s.
+        
 return minRow * minCol;
     }
 }
