@@ -1,3 +1,4 @@
+//Please dont read this code, Im only not understanding what I wrote this after 5mins 
 public class Solution {
     public IList<int> AddToArrayForm(int[] num, int k) {
         int carry = 0;
