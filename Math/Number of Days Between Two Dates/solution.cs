@@ -12,18 +12,12 @@ public class solution
         if (month == 2)
         {
             if (IsLeapYear(year))
-            {
                 return 29;
-            }
             else
-            {
                 return 28;
-            }
         }
         else
-        {
             return days[month];
-        }
     }
 
     public int NumberOfDays(int date1, int date2, int numberOfDays)
@@ -52,9 +46,7 @@ public class solution
         if (year % 4 == 0)
         {
             if (year % 100 == 0)
-            {
                 return year % 400 == 0;
-            }
             return true;
         }
         return false;
