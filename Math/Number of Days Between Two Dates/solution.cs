@@ -52,24 +52,21 @@ public class nod
             year1++;
         }
 
-        if (year1 == year2 - 1)
+        int numberOfMonths = (month1 + month2) % 12 + 12 - month2;
+        while (numberOfMonths != 0)
         {
-            int numberOfMonths = (month1 + month2) % 12 + 12 - month2;
-            while (numberOfMonths != 0)
+            numberOfDays += DaysInGivenMonth(month1, year1);
+            month1++;
+            numberOfMonths--;
+
+            if (month1 == 12)
             {
-                numberOfDays += DaysInGivenMonth(month1, year1);
-                month1++;
-                numberOfMonths--;
-
-                if (month1 == 12)
-                {
-                    year1++;
-                    month1 = 1;
-                }
+                year1++;
+                month1 = 1;
             }
-
-            numberOfDays = NumberOfDays(firstDate, secondDate, numberOfDays);
         }
+
+        numberOfDays = NumberOfDays(firstDate, secondDate, numberOfDays);
     }
 
     public void AssignSplittedData(string date, int year, int month, int Date)
