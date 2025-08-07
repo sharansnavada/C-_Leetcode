@@ -5,7 +5,7 @@ public class solution
     int numberOfDays = 0;
     int year1 = 0; int year2 = 0;
     int month1 = 0; int month2 = 0; 
-    int date1 = 0; int date2 = 0;
+    int firstDate = 0; int secondDate2 = 0;
     
     public int DaysBetweenDates(string date1, string date2)
     {
