@@ -1,3 +1,5 @@
+using System.Reflection.Metadata.Ecma335;
+
 public class nod
     {
         Dictionary<int, int> days = new Dictionary<int, int>(){{1,31},{3,31},{4,30},{5,31},{6,30},{7,31},{8,31},
@@ -24,34 +26,45 @@ public class nod
         }
 
         public void CalculateYear(){
-            // while(year1 != year2 - 1){
-            //     if(IsLeapYear(year1)){
-            //         numberOfDays += 366;
-            //     }
-            //     else{
-            //         numberOfDays += 365;
-            //     }
-            //     year1++;
-            // }
+        // while(year1 != year2 - 1){
+        //     if(IsLeapYear(year1)){
+        //         numberOfDays += 366;
+        //     }
+        //     else{
+        //         numberOfDays += 365;
+        //     }
+        //     year1++;
+        // }
 
-            if(year1 == year2){
-                while(month1 != month2){
-                    numberOfDays += DaysInGivenMonth(month1,year1);
-                    month1++;
-                    if(month1 == 12){
-                        month1++; year1++;
-                    }
+        if (year1 == year2)
+        {
+            while (month1 != month2)
+            {
+                numberOfDays += DaysInGivenMonth(month1, year1);
+                month1++;
+                if (month1 == 12)
+                {
+                    month1++; year1++;
                 }
-                numberOfDays = NumberOfDays(firstDate,secondDate,numberOfDays);
             }
-            else if(year1 == year2 - 1){
-                int numberOfMonths = (month1 + month2) % 12 + 12;
-                while(numberOfMonths != 0){
-                    numberOfDays += days[month1];
-                    month1++; numberOfMonths--;
+            numberOfDays = NumberOfDays(firstDate, secondDate, numberOfDays);
+        }
+        else if (year1 == year2 - 1)
+        {
+            int numberOfMonths = (month1 - month2) % 12 + 12;
+            while (numberOfMonths != 0)
+            {
+                numberOfDays += DaysInGivenMonth(month1, year1);
+                month1++; numberOfMonths--;
+                if (month1 == 12)
+                {
+                    year1++; month1 = 1;
                 }
+            }
+            numberOfDays = NumberOfDays(firstDate,secondDate,numberOfDays);
             }
         }
+        
 
         public void AssignSplittedData(string date, int year, int month, int Date)
         {
