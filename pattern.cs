@@ -15,16 +15,15 @@ namespace Collections
 
             for(int i = 0; i < n; i++)
             {
+                int space = i;
                 for(int j = 0; j < (n - i); j++)
                 {
-                    if(j == i)
+                    while(space != 0)
                     {
-                        sb.Append(" ");
+                        sb.Append("  ");
+                        space--;
                     }
-                    else
-                    {
-                        sb.Append(startingNumber.ToString());
-                    }
+                    sb.Append(startingNumber >= 10 ? startingNumber + "  " : "0" + startingNumber + "  ");
                 }
                 Console.WriteLine(sb);
                 sb = new StringBuilder();
