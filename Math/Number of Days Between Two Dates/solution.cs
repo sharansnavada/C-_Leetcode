@@ -3,6 +3,10 @@ public class solution
     Dictionary<int, int> days = new Dictionary<int, int>(){{1,31},{3,31},{4,30},{5,31},{6,30},{7,31},{8,31},
                                                             {9,30},{10,31},{11,30},{12,31}};
     int numberOfDays = 0;
+    int year1 = 0; int year2 = 0;
+    int month1 = 0; int month2 = 0; 
+    int date1 = 0; int date2 = 0;
+    
     public int DaysBetweenDates(string date1, string date2)
     {
 
