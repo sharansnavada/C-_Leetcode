@@ -12,19 +12,11 @@ public class nod
     int year1 = 0, year2 = 0;
     int month1 = 0, month2 = 0;
     int firstDate = 0, secondDate = 0;
-    int numberOfLeapYearInBetween = 0;
 
     public int DaysBetweenDates(string date1, string date2)
     {
-        string[] splitData = date1.Split('-');
-        year1 = int.Parse(splitData[2]);
-        month1 = int.Parse(splitData[1]);
-        firstDate = int.Parse(splitData[0]);
-
-        splitData = date2.Split('-');
-        year2 = int.Parse(splitData[2]);
-        month2 = int.Parse(splitData[1]);
-        secondDate = int.Parse(splitData[0]);
+        AssignSplittedData(date1, ref year1, ref month1, ref firstDate);
+        AssignSplittedData(date2, ref year2, ref month2, ref secondDate);
 
         CalculateYear();
         return numberOfDays;
@@ -37,50 +29,40 @@ public class nod
             while (month1 != month2)
             {
                 numberOfDays += DaysInGivenMonth(month1, year1);
-                // if (month1 == 12)
-                // {
-                //     month1++;
-                //     year1++;
-                // }
                 month1++;
             }
             numberOfDays = NumberOfDays(firstDate, secondDate, numberOfDays);
         }
-
-        else{
+        else
+        {
             while (year1 != year2 - 1)
-        {
-            numberOfDays += IsLeapYear(year1) ? 366 : 365;
-            numberOfLeapYearInBetween += IsLeapYear(year1) ? 1 : 0;
-            year1++;
-        }
-
-        int numberOfMonths = (month1 + month2) % 12 + 12 - month2;
-        while (/*numberOfMonths != 0*/(month1 != month2 || year1 != year2))
-        {
-            numberOfDays += DaysInGivenMonth(month1, year1);
-
-            //numberOfMonths--;
-
-            if (month1 == 12)
             {
+                numberOfDays += IsLeapYear(year1) ? 366 : 365;
                 year1++;
-                month1 = 0;
             }
-            
-            month1++;
-        }
-        //numberOfDays += DaysInGivenMonth(month1, year1);
-        numberOfDays = NumberOfDays(firstDate, secondDate, numberOfDays);
+
+            while ((month1 != month2 || year1 != year2))
+            {
+                numberOfDays += DaysInGivenMonth(month1, year1);
+
+                if (month1 == 12)
+                {
+                    year1++;
+                    month1 = 0;
+                }
+
+                month1++;
+            }
+            numberOfDays = NumberOfDays(firstDate, secondDate, numberOfDays);
         }
     }
 
-    public void AssignSplittedData(string date, int year, int month, int Date)
+    public void AssignSplittedData(string date, ref int year, ref int month, ref int Date)
     {
         string[] splitData = date.Split('-');
-        year = int.Parse(splitData[0]);
+        year = int.Parse(splitData[2]);
         month = int.Parse(splitData[1]);
-        Date = int.Parse(splitData[2]);
+        Date = int.Parse(splitData[0]);
     }
 
     public int DaysInGivenMonth(int month, int year)
@@ -101,7 +83,6 @@ public class nod
                 numberOfDays--;
                 date1--;
             }
-            //numberOfDays--; //checkthis
         }
         else if (date1 < date2)
         {
@@ -110,12 +91,7 @@ public class nod
                 numberOfDays++;
                 date1++;
             }
-            //numberOfDays++;//check this
         }
-        // else if (date1 == date2)
-        // {
-        //     numberOfDays -= numberOfLeapYearInBetween;
-        // }
         return numberOfDays;
     }
 
