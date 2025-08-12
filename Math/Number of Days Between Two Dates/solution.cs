@@ -12,6 +12,7 @@ public class nod
     int year1 = 0, year2 = 0;
     int month1 = 0, month2 = 0;
     int firstDate = 0, secondDate = 0;
+    int numberOfLeapYearInBetween = 0;
 
     public int DaysBetweenDates(string date1, string date2)
     {
@@ -36,37 +37,42 @@ public class nod
             while (month1 != month2)
             {
                 numberOfDays += DaysInGivenMonth(month1, year1);
+                // if (month1 == 12)
+                // {
+                //     month1++;
+                //     year1++;
+                // }
                 month1++;
-                if (month1 == 12)
-                {
-                    month1++;
-                    year1++;
-                }
             }
             numberOfDays = NumberOfDays(firstDate, secondDate, numberOfDays);
         }
 
-        while (year1 != year2 - 1)
+        else{
+            while (year1 != year2 - 1)
         {
             numberOfDays += IsLeapYear(year1) ? 366 : 365;
+            numberOfLeapYearInBetween += IsLeapYear(year1) ? 1 : 0;
             year1++;
         }
 
         int numberOfMonths = (month1 + month2) % 12 + 12 - month2;
-        while (numberOfMonths != 0)
+        while (/*numberOfMonths != 0*/(month1 != month2 || year1 != year2))
         {
             numberOfDays += DaysInGivenMonth(month1, year1);
-            month1++;
-            numberOfMonths--;
+
+            //numberOfMonths--;
 
             if (month1 == 12)
             {
                 year1++;
-                month1 = 1;
+                month1 = 0;
             }
+            
+            month1++;
         }
-
+        //numberOfDays += DaysInGivenMonth(month1, year1);
         numberOfDays = NumberOfDays(firstDate, secondDate, numberOfDays);
+        }
     }
 
     public void AssignSplittedData(string date, int year, int month, int Date)
@@ -95,6 +101,7 @@ public class nod
                 numberOfDays--;
                 date1--;
             }
+            //numberOfDays--; //checkthis
         }
         else if (date1 < date2)
         {
@@ -103,7 +110,12 @@ public class nod
                 numberOfDays++;
                 date1++;
             }
+            //numberOfDays++;//check this
         }
+        // else if (date1 == date2)
+        // {
+        //     numberOfDays -= numberOfLeapYearInBetween;
+        // }
         return numberOfDays;
     }
 
