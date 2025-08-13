@@ -83,6 +83,8 @@ public class nod
                 numberOfDays--;
                 date1--;
             }
+            if (date1 == date2 && date1 == secondDate)
+                numberOfDays++; // include the end date only when necessary
         }
         else if (date1 < date2)
         {
@@ -91,6 +93,8 @@ public class nod
                 numberOfDays++;
                 date1++;
             }
+            if (date1 == date2 && date1 == secondDate)
+                numberOfDays++; // include the end date only when necessary
         }
         return numberOfDays;
     }
