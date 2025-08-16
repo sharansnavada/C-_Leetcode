@@ -107,3 +107,48 @@ public class Solution
         return false;
     }
 }
+
+
+//Optimized and approved code
+public class Solution
+{
+    public int DaysBetweenDates(string date1, string date2)
+    {
+        return Math.Abs(ToDays(date1) - ToDays(date2));
+    }
+
+    private int ToDays(string date)
+    {
+        string[] parts = date.Split('-');
+        int year = int.Parse(parts[0]);
+        int month = int.Parse(parts[1]);
+        int day = int.Parse(parts[2]);
+
+        int days = 0;
+
+        // add days for full years before current year
+        for (int y = 1971; y < year; y++)
+        {
+            days += IsLeap(y) ? 366 : 365;
+        }
+
+        // add days for full months before current month
+        int[] monthDays = { 31, IsLeap(year) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+        for (int m = 1; m < month; m++)
+        {
+            days += monthDays[m - 1];
+        }
+
+        // add days in current month
+        days += day;
+
+        return days;
+    }
+
+    private bool IsLeap(int year)
+    {
+        if (year % 400 == 0) return true;
+        if (year % 100 == 0) return false;
+        return year % 4 == 0;
+    }
+}
