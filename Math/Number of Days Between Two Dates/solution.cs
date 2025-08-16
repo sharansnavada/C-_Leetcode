@@ -1,3 +1,5 @@
+//This code wont handle if date1 is recent date and date2 is the older date
+//Below code will handle this condition
 public class Solution
 {
     Dictionary<int, int> days = new Dictionary<int, int>() {
