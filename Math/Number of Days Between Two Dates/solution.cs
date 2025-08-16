@@ -1,7 +1,4 @@
-using System.Reflection.Metadata.Ecma335;
-using System.Collections.Generic;
-
-public class nod
+public class Solution
 {
     Dictionary<int, int> days = new Dictionary<int, int>() {
         {1, 31}, {3, 31}, {4, 30}, {5, 31}, {6, 30}, {7, 31},
@@ -9,9 +6,9 @@ public class nod
     };
 
     int numberOfDays = 0;
-    int year1 = 0, year2 = 0;
-    int month1 = 0, month2 = 0;
-    int firstDate = 0, secondDate = 0;
+    int year1 = 0; int year2 = 0;
+    int month1 = 0; int month2 = 0;
+    int firstDate = 0; int secondDate = 0;
 
     public int DaysBetweenDates(string date1, string date2)
     {
@@ -60,9 +57,9 @@ public class nod
     public void AssignSplittedData(string date, ref int year, ref int month, ref int Date)
     {
         string[] splitData = date.Split('-');
-        year = int.Parse(splitData[2]);
+        year = int.Parse(splitData[0]);
         month = int.Parse(splitData[1]);
-        Date = int.Parse(splitData[0]);
+        Date = int.Parse(splitData[2]);
     }
 
     public int DaysInGivenMonth(int month, int year)
@@ -83,8 +80,8 @@ public class nod
                 numberOfDays--;
                 date1--;
             }
-            if (date1 == date2 && date1 == secondDate)
-                numberOfDays++; // include the end date only when necessary
+            // if (date1 == date2 && date1 == secondDate)
+            //     numberOfDays++; // include the end date only when necessary
         }
         else if (date1 < date2)
         {
@@ -93,8 +90,8 @@ public class nod
                 numberOfDays++;
                 date1++;
             }
-            if (date1 == date2 && date1 == secondDate)
-                numberOfDays++; // include the end date only when necessary
+            // if (date1 == date2 && date1 == secondDate)
+            //     numberOfDays++; // include the end date only when necessary
         }
         return numberOfDays;
     }
