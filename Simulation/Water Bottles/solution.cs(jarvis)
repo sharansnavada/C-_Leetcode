@@ -1,0 +1,17 @@
+public class Solution {
+    public int NumWaterBottles(int numBottles, int numExchange) {
+        int totalBottles = numBottles;       // Total bottles we can drink
+        int emptyBottles = numBottles;       // Initially, all drunk bottles become empty
+
+        // Keep exchanging while we have enough empty bottles
+        while (emptyBottles >= numExchange) {
+            int newBottles = emptyBottles / numExchange;   // Full bottles we get from exchange
+            int remainingBottles = emptyBottles % numExchange; // Leftover empty bottles
+
+            totalBottles += newBottles;  // Drink the new full bottles
+            emptyBottles = newBottles + remainingBottles;  // Update empty bottles
+        }
+
+        return totalBottles;
+    }
+}
