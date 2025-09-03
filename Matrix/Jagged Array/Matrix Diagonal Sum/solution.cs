@@ -5,7 +5,7 @@ public class Solution {
         int sum = 0;
         
         while(fromLeft < mat.Length && fromRight >= 0){
-            if(fromLeft == fromRight) //if the row's length is odd number, then I'm preventing middle number to add twice 
+            if(fromLeft == fromRight) //if the row's length is odd number, then I'm preventing middle number to be added twice 
                 sum += mat[fromLeft][fromLeft]; 
             else{
                 sum += mat[fromLeft][fromLeft] + mat[fromLeft][fromRight];
