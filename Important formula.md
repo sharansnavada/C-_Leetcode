@@ -63,3 +63,65 @@ Or simply:
   Multiply the current decimal value by **2** (shift left) and **add the current bit**.
 - **Use Case:**  
   Used when converting **binary → decimal** or while handling **binary prefix calculations**.
+
+
+
+  ========================================================================================================================================================
+  $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+  ========================================================================================================================================================
+
+  
+## Finding the Mid in Binary Search
+
+In binary search, we repeatedly divide the search range into two halves. To do this, we calculate the **middle index** (`mid`) of the current search range.
+
+### Basic Formula
+int mid = (low + high) / 2;
+
+- `low` → starting index of the current search range.
+- `high` → ending index of the current search range.
+- `mid` → middle index between `low` and `high`.
+
+### Problem with the Basic Formula
+The formula `(low + high) / 2` **may cause integer overflow** if `low` and `high` are very large.
+
+**Example:**
+int low = 1_000_000_000;
+int high = 2_000_000_000;
+int mid = (low + high) / 2;  // ❌ Overflow risk
+
+### Safe Formula
+To avoid overflow, we calculate `mid` like this:
+
+int mid = low + (high - low) / 2;
+
+
+#### Why This Works
+- `high - low` → gives the size of the current range (never overflows).
+- `(high - low) / 2` → gives half of the range.
+- `low + ...` → shifts from the start index to the middle.
+
+### Example
+
+int[] arr = {1, 3, 5, 7, 9};
+int low = 0, high = arr.Length - 1;
+
+while (low <= high)
+{
+    int mid = low + (high - low) / 2; // ✅ Safe mid formula
+
+    if (arr[mid] == 7)
+        return mid; // found
+    else if (arr[mid] < 7)
+        low = mid + 1; // search right half
+    else
+        high = mid - 1; // search left half
+}
+
+
+### Summary Table
+
+| Formula                         | Risk of Overflow | Recommended? |
+| ------------------------------ | ---------------- | ------------ |
+| `mid = (low + high) / 2`       | **Yes**          | ❌ No        |
+| `mid = low + (high - low) / 2` | **No**           | ✅ Yes       |
