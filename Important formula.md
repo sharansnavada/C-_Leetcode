@@ -66,9 +66,7 @@ Or simply:
 
 
 
-  ========================================================================================================================================================
-  $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-  ========================================================================================================================================================
+  ================ $$$$$$$$$$$$$$$$$$$$$$$$$$ ====================
 
   
 ## Finding the Mid in Binary Search
@@ -76,7 +74,7 @@ Or simply:
 In binary search, we repeatedly divide the search range into two halves. To do this, we calculate the **middle index** (`mid`) of the current search range.
 
 ### Basic Formula
-int mid = (low + high) / 2;
+**int mid = (low + high) / 2;**
 
 - `low` → starting index of the current search range.
 - `high` → ending index of the current search range.
@@ -93,7 +91,7 @@ int mid = (low + high) / 2;  // ❌ Overflow risk
 ### Safe Formula
 To avoid overflow, we calculate `mid` like this:
 
-int mid = low + (high - low) / 2;
+**int mid = low + (high - low) / 2;**
 
 
 #### Why This Works
