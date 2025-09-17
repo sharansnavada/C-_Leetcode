@@ -1,5 +1,5 @@
 
-## Binary to Decimal Conversion Formula
+# Binary to Decimal Conversion Formula
 
 ## Formula
 
