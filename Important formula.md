@@ -67,7 +67,7 @@ Or simply:
 
 
 
-            
+  
 # 2) Decimal to Binary Conversion in C#
 
 There are two main ways to convert a decimal number into binary:
