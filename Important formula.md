@@ -4,7 +4,7 @@
 
 ## Formula
 
-**bit = bit * 2 + nums[i];** //////////////////
+**bit = bit * 2 + nums[i];** 
 
 
 ---
@@ -50,14 +50,14 @@ decimal = (((b₀ * 2 + b₁) * 2 + b₂) * 2 + ... + bn)
 Or simply:
 
 
-**decimal = decimal * 2 + current_bit;** //////////
+**decimal = decimal * 2 + current_bit;** 
 
 ---
 
 ## **Summary**
 - **Formula:**  
   
-  bit = bit * 2 + nums[i];  //////////////////
+  **bit = bit * 2 + nums[i];**  
 
 - **Meaning:**  
   Multiply the current decimal value by **2** (shift left) and **add the current bit**.
@@ -128,6 +128,8 @@ Convert.ToString(255, 16); // "ff"
 
 In binary search, we repeatedly divide the search range into two halves. To do this, we calculate the **middle index** (`mid`) of the current search range.
 
+---
+
 ### Basic Formula
 **int mid = (low + high) / 2;**
 
@@ -135,6 +137,7 @@ In binary search, we repeatedly divide the search range into two halves. To do t
 - `high` → ending index of the current search range.
 - `mid` → middle index between `low` and `high`.
 
+---
 ### Problem with the Basic Formula
 The formula `(low + high) / 2` **may cause integer overflow** if `low` and `high` are very large.
 
@@ -143,12 +146,13 @@ int low = 1_000_000_000;
 int high = 2_000_000_000;
 int mid = (low + high) / 2;  // ❌ Overflow risk
 
+---
 ### Safe Formula
 To avoid overflow, we calculate `mid` like this:
 
 **int mid = low + (high - low) / 2;**
 
-
+---
 #### Why This Works
 - `high - low` → gives the size of the current range (never overflows).
 - `(high - low) / 2` → gives half of the range.
@@ -171,7 +175,7 @@ while (low <= high)
         high = mid - 1; // search left half
 }
 
-
+---
 ### Summary Table
 
 | Formula                         | Risk of Overflow | Recommended? |
