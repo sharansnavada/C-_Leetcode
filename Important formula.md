@@ -1,6 +1,4 @@
 
-
-<pre>
 #### Binary to Decimal Conversion Formula
 
 ## Formula
@@ -65,7 +63,6 @@ Or simply:
 - **Use Case:**  
   Used when converting **binary → decimal** or while handling **binary prefix calculations**.
 
-</pre>
 
  ================ $$$$$$$$$$$$$$$$$$$$$$$$$$ ====================
  
