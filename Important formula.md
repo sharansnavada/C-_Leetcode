@@ -64,6 +64,55 @@ Or simply:
 - **Use Case:**  
   Used when converting **binary → decimal** or while handling **binary prefix calculations**.
 
+ ================ $$$$$$$$$$$$$$$$$$$$$$$$$$ ====================
+ 
+ 
+
+## Decimal to Binary Conversion in C#
+
+There are two main ways to convert a decimal number into binary:
+
+---
+
+### 1. Manual Division Method  
+This is the mathematical approach:  
+1. Divide the number by 2.  
+2. Record the remainder (0 or 1).  
+3. Update the quotient as the result of division.  
+4. Repeat steps until the quotient becomes 0.  
+5. The binary form is the sequence of remainders read in **reverse order**.  
+
+**Example:** Convert 6 → Binary  
+- 6 ÷ 2 = 3, remainder = 0  
+- 3 ÷ 2 = 1, remainder = 1  
+- 1 ÷ 2 = 0, remainder = 1  
+Reading remainders backwards → **110**  
+
+This is how the conversion works internally.  
+
+---
+
+### 2. Built-in C# Method (`Convert.ToString`)  
+C# provides a ready method:  
+
+int number = 25;
+string binary = Convert.ToString(number, 2);
+Console.WriteLine(binary); // Output: 11001
+
+- The first argument is the decimal number.  
+- The second argument is the base (`2` for binary, `8` for octal, `10` for decimal, `16` for hex).  
+- Internally, this method also uses the **division and remainder** technique but saves us from implementing it manually.  
+
+**Examples:**  
+Convert.ToString(255, 2);  // "11111111"
+Convert.ToString(255, 16); // "ff"
+
+---
+
+⚡ In short:  
+- **Formula approach (manual)** → Divide by 2, collect remainders, reverse them.  
+- **C# built-in** → Use `Convert.ToString(number, 2)` for quick conversion.   
+
 
 
 
