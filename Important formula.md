@@ -1,5 +1,5 @@
 
-# Binary to Decimal Conversion Formula
+# 1) Binary to Decimal Conversion Formula
 
 ## Formula
 
@@ -62,13 +62,15 @@ Or simply:
   Multiply the current decimal value by **2** (shift left) and **add the current bit**.
 - **Use Case:**  
   Used when converting **binary → decimal** or while handling **binary prefix calculations**.
+***
 
 
- ================ $$$$$$$$$$$$$$$$$$$$$$$$$$ ====================
- 
- 
 
-#### Decimal to Binary Conversion in C#
+
+
+
+  
+# 2) Decimal to Binary Conversion in C#
 
 There are two main ways to convert a decimal number into binary:
 
@@ -111,20 +113,15 @@ Convert.ToString(255, 16); // "ff"
 
 ⚡ In short:  
 - **Formula approach (manual)** → Divide by 2, collect remainders, reverse them.  
-- **C# built-in** → Use `Convert.ToString(number, 2)` for quick conversion.   
+- **C# built-in** → Use `Convert.ToString(number, 2)` for quick conversion.
+***
 
 
 
 
 
 
-  ================ $$$$$$$$$$$$$$$$$$$$$$$$$$ ====================
-
-
-
-
-  
-#### Finding the Mid in Binary Search
+# 3) Finding the Mid in Binary Search
 
 In binary search, we repeatedly divide the search range into two halves. To do this, we calculate the **middle index** (`mid`) of the current search range.
 
