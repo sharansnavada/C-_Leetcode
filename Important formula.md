@@ -62,14 +62,12 @@ Or simply:
   Multiply the current decimal value by **2** (shift left) and **add the current bit**.
 - **Use Case:**  
   Used when converting **binary → decimal** or while handling **binary prefix calculations**.
-***
 
 
 
 
 
-
-  
+            
 # 2) Decimal to Binary Conversion in C#
 
 There are two main ways to convert a decimal number into binary:
