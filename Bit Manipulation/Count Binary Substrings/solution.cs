@@ -33,7 +33,7 @@ namespace Collections
                     }
                     if (total != 0)
                     {
-                        if (str.Length / total == 2)
+                        if (((float)str.Length / (float)total == 2f)) // as 5/2 was also considered as 2 instead of 2.5, so casting these int values to the float datatype to get the exact value with the decimal. "000111000"  ---> for this test case, instead of 6 I was getting 7 as output
                         {
                             char bit = str[str.Length / 2];
                             int index = (str.Length / 2);
