@@ -177,3 +177,80 @@ while (low <= high)
 | ------------------------------ | ---------------- | ------------ |
 | `mid = (low + high) / 2`       | **Yes**          | ❌ No        |
 | `mid = low + (high - low) / 2` | **No**           | ✅ Yes       |
+
+
+
+
+
+
+# 4) Array Traversal (Forward and Backward in Circular Manner)
+
+To traverse an array back and forth within a single loop using modulo:
+
+- **Next index (forward traversal):**
+
+```csharp
+arr[((i + 1) % n + n) % n]
+```
+
+- **Previous index (backward traversal):**
+
+```csharp
+arr[((i - 1) % n + n) % n]
+```
+
+### Explanation:
+- `% n` ensures the index wraps around within the array length.
+- Adding `+ n` before applying `% n` again handles negative values of `i`, ensuring the index always stays within `[0, n-1]`.
+
+---
+
+### Example in C#
+
+Suppose we have an array:
+
+```csharp
+int[] arr = { 10, 20, 30, 40, 50 };
+int n = arr.Length;
+```
+
+We want to print the next and previous element of each index in a circular way:
+
+```csharp
+for (int i = 0; i < n; i++)
+{
+    int nextIndex = ((i + 1) % n + n) % n;
+    int prevIndex = ((i - 1) % n + n) % n;
+
+    Console.WriteLine($"Index {i}, Value: {arr[i]}");
+    Console.WriteLine($"   Next: {arr[nextIndex]}");
+    Console.WriteLine($"   Previous: {arr[prevIndex]}");
+}
+```
+
+### Output:
+```
+Index 0, Value: 10
+   Next: 20
+   Previous: 50
+
+Index 1, Value: 20
+   Next: 30
+   Previous: 10
+
+Index 2, Value: 30
+   Next: 40
+   Previous: 20
+
+Index 3, Value: 40
+   Next: 50
+   Previous: 30
+
+Index 4, Value: 50
+   Next: 10
+   Previous: 40
+```
+
+This shows how the formula allows circular traversal:
+- From the last element, "next" goes to the first.
+- From the first element, "previous" goes to the last.
