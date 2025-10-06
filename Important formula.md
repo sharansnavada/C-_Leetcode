@@ -254,3 +254,77 @@ Index 4, Value: 50
 This shows how the formula allows circular traversal:
 - From the last element, "next" goes to the first.
 - From the first element, "previous" goes to the last.
+
+
+#5) Bitmask Formula to Represent Characters in a Word
+
+### Formula
+```csharp
+key |= 1 << (ch - 'a');
+```
+
+### Explanation
+This formula uses **bitwise operations** to represent which letters (a–z) appear in a word using a single integer.
+
+#### Step-by-step breakdown
+1. **`ch - 'a'`** → Converts the character to a number between 0 and 25.
+   - `'a' - 'a' = 0`
+   - `'b' - 'a' = 1`
+   - `'c' - 'a' = 2`
+
+2. **`1 << (ch - 'a')`** → Shifts the bit `1` to the left by that number.
+   - `'a'` → `1 << 0` → `0001`
+   - `'b'` → `1 << 1` → `0010`
+   - `'c'` → `1 << 2` → `0100`
+
+3. **`|=`** → Bitwise OR assignment.  
+   This turns ON the bit corresponding to that letter in the variable `key`.
+
+   Example:
+   ```csharp
+   key = 0;               // 0000
+   key |= 1 << 0;         // 'a' → 0001
+   key |= 1 << 1;         // 'b' → 0011
+   key |= 1 << 2;         // 'c' → 0111
+   ```
+
+   Final `key` = `0b00000111` → indicates `'a'`, `'b'`, `'c'` are present.
+
+---
+
+#### Visual Representation
+
+```
+key before = 00000000000000000000000011
+mask       = 00000000000000000000000100
+-------------------------------------- OR
+key after  = 00000000000000000000000111
+                         ↑ ↑ ↑
+                        c b a
+
+```
+
+### To check if a character exists
+```csharp
+(key & (1 << (ch - 'a'))) != 0
+```
+✅ True → character exists  
+❌ False → character not in the word
+
+Example:
+```csharp
+bool hasA = (key & (1 << ('a' - 'a'))) != 0;  // true
+bool hasB = (key & (1 << ('b' - 'a'))) != 0;  // true
+bool hasC = (key & (1 << ('c' - 'a'))) != 0;  // true
+bool hasD = (key & (1 << ('d' - 'a'))) != 0;  // false
+```
+
+---
+
+### To check if multiple characters exist
+```csharp
+int mask = (1 << ('a' - 'a')) | (1 << ('b' - 'a')) | (1 << ('c' - 'a'));
+bool hasAll = (key & mask) == mask;
+```
+
+This verifies if `'a'`, `'b'`, and `'c'` are all present in the same word.
