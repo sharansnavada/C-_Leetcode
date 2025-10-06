@@ -256,7 +256,7 @@ This shows how the formula allows circular traversal:
 - From the first element, "previous" goes to the last.
 
 
-#5) Bitmask Formula to Represent Characters in a Word
+# 5) Bitmask Formula to Represent Characters in a Word
 
 ### Formula
 ```csharp
