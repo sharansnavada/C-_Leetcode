@@ -1,36 +1,54 @@
-public class Solution {
-    public IList<int> ZigzagTraversal(int[][] grid) {
-        int row = grid.Length - 1;
-        int column = grid[row].Length - 1;
-        int i = 0; int j = 0;
-        List<int> retList = new List<int>();
+using System;
+using System.Collections.Generic;
+using System.Text;
 
-        if (column + 1 == 2)
+namespace CSharp_Practise
+{
+        public class zigzag
+    {
+        public IList<int> ZigzagTraversal(int[][] grid)
         {
-            bool evenRow = true;
-            while (i < row + 1 && j < column + 1)
+            bool isEvenRow = true;
+            List<int> retList = new List<int>();
+            int column = 0;
+            bool lastElementInPrevRow = !(grid[0].Length % 2 == 0);
+
+            for (int row = 0; row < grid.Length; row++)
             {
-                if (evenRow)
-                    retList.Add(grid[i++][j++]);
+                if (isEvenRow)
+                {
+                    int[] arr = grid[row];
+                    while (column < grid[row].Length)
+                    {
+                        retList.Add(arr[column]);
+                        column += 2;
+                    }
+                    isEvenRow = !isEvenRow;
+                }
                 else
-                    retList.Add(grid[i++][j--]);
+                {
+                    if (lastElementInPrevRow)
+                    {
+                        column = grid[row].Length - 2;
+                    }
+                    else
+                    {
+                        column = grid[row].Length - 1;
+                    }
 
-                evenRow = !evenRow;
-            }
-        }
-        else
-        {
-            retList.Add(grid[i][j]);
-            j = column;
-            while (i < row + 1 && j < column + 1)
-            {
-                retList.Add(grid[i++][j--]);
-            }
-            i--;
-            if(row + 1 != 2) // if only two rowa are there no need to add the last row last colmns element. [[1,9,9],[6,2,8]]
-                retList.Add(grid[i][column]);
-        }
+                    int[] arr = grid[row];
 
-        return retList;
+                    while (column >= 0)
+                    {
+                        retList.Add(arr[column]);
+                        column -= 2;
+                    }
+
+                    isEvenRow = !isEvenRow;
+                }
+            }
+            return retList;
+        }
     }
 }
+
