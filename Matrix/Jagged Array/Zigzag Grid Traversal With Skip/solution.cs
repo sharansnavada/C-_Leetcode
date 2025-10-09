@@ -1,14 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CSharp_Practise
-{
-        public class zigzag
-    {
-        public IList<int> ZigzagTraversal(int[][] grid)
-        {
-            bool isEvenRow = true;
+public class Solution {
+    public IList<int> ZigzagTraversal(int[][] grid) {
+        bool isEvenRow = true;
             List<int> retList = new List<int>();
             int column = 0;
             bool lastElementInPrevRow = !(grid[0].Length % 2 == 0);
@@ -49,7 +41,5 @@ namespace CSharp_Practise
                 }
             }
             return retList;
-        }
     }
 }
-
