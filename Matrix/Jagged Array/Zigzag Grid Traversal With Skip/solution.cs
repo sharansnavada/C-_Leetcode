@@ -4,8 +4,8 @@ using System.Text;
 
 namespace CSharp_Practise
 {
-        public class zigzag
-    {
+     public class zigzag
+        {
         public IList<int> ZigzagTraversal(int[][] grid)
         {
             bool isEvenRow = true;
@@ -18,6 +18,7 @@ namespace CSharp_Practise
                 if (isEvenRow)
                 {
                     int[] arr = grid[row];
+                    column = 0;
                     while (column < grid[row].Length)
                     {
                         retList.Add(arr[column]);
