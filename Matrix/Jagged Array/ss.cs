@@ -14,10 +14,11 @@ namespace CSharp_Practise
             for(int i = 0; i < grid.Length - 2; i++)
             {
                 int[] arr1 = grid[i]; int[] arr2 = grid[i + 1]; int[] arr3 = grid[i + 2];
-                int index = 0; int maxNumber = int.MinValue;
-                while(index != 3/*arr1.Length - 2*/)
+                int index = 0; 
+                while(index != arr1.Length - 2)
                 {
-                    for(int j = index; j < 3/*arr1.Length - 2*/; j++)
+                    int maxNumber = int.MinValue;
+                    for(int j = index; j < index + 3; j++)
                     {
                         if (arr1[j] > maxNumber)
                             maxNumber = arr1[j];
