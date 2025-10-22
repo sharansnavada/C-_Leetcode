@@ -55,15 +55,16 @@ public class Solution {
 // Console.WriteLine(now.ToString("yyyy-MM-dd HH:mm:ss")); // 2025-10-22 20:30:00
 
 
-| Feature | Example | Description |
-|----------|----------|-------------|
-| Get current date | `DateTime.Now` | Includes time |
-| Get today’s date | `DateTime.Today` | Time is 00:00:00 |
-| Add 7 days | `today.AddDays(7)` | Returns a new `DateTime` |
-| Difference | `end - start` | Returns a `TimeSpan` |
-| Day of week | `today.DayOfWeek` | Returns `DayOfWeek` enum |
-| Format | `ToString("dd/MM/yyyy")` | Custom format |
-
+/*
+| Feature           | Example                  | Description              |
+|-------------------|--------------------------|--------------------------|
+| Get current date  | DateTime.Now             | Includes time            |
+| Get today’s date  | DateTime.Today           | Time is 00:00:00         |
+| Add 7 days        | today.AddDays(7)         | Returns a new DateTime   |
+| Difference        | end - start              | Returns a TimeSpan       |
+| Day of week       | today.DayOfWeek          | Returns DayOfWeek enum   |
+| Format            | ToString("dd/MM/yyyy")   | Custom format            |
+*/
 
 
 
