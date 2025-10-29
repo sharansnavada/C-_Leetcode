@@ -4,6 +4,7 @@ public class Solution {
         int count = 0;
             bool isPrevSubstring = true;
             int actualIndex = 0;
+            bool isPrevNotSubString = true; ;
 
             for(int i = 0; i <= (sequence.Length - word.Length); i++)
             {
@@ -21,12 +22,15 @@ public class Solution {
                     }
                     if (isPrevSubstring)
                     {
+                        count = isPrevNotSubString ? 0 : count;
+                        isPrevNotSubString = false;
                         count++;
                         i = j - 1; // -1 because in forloop one increment will happen
                     }
                     else
                     {
-                        count = 0;
+                        isPrevNotSubString = true;
+                        //count = 0;
                         actualIndex++;
                         i = actualIndex - 1; // -1 because in forloop one increment will happen
 
@@ -37,7 +41,12 @@ public class Solution {
                 {
                     actualIndex++;
                     i = actualIndex - 1; // -1 because in forloop one increment will happen
-                    count = 0;
+                    //count = 0;
+                    isPrevNotSubString = true;
+                }
+            }
+
+            return count;
                 }
             }
 
