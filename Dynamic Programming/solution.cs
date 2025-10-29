@@ -4,47 +4,48 @@ public class Solution {
         int count = 0;
             bool isPrevSubstring = true;
             int actualIndex = 0;
-            bool isPrevNotSubString = true; ;
+            bool isPrevNotSubString = true; 
 
-            for(int i = 0; i <= (sequence.Length - word.Length); i++)
+            for (int i = 0; i <= (sequence.Length - word.Length); i++)
+        {
+            if (sequence[i] == word[0])
             {
-                if(sequence[i] == word[0])
+                int j = i;
+                for (int k = 0; k < word.Length; k++)
                 {
-                    int j = i;
-                    for(int k = 0; k < word.Length; k++)
+                    if (sequence[j] != word[k])
                     {
-                        if(sequence[j] != word[k])
-                        {
-                            isPrevSubstring = false;
-                            break;
-                        }
-                        j++;
+                        isPrevSubstring = false;
+                        break;
                     }
-                    if (isPrevSubstring)
-                    {
-                        count = isPrevNotSubString ? 0 : count;
-                        isPrevNotSubString = false;
-                        count++;
-                        i = j - 1; // -1 because in forloop one increment will happen
-                    }
-                    else
-                    {
-                        isPrevNotSubString = true;
-                        //count = 0;
-                        actualIndex++;
-                        i = actualIndex - 1; // -1 because in forloop one increment will happen
-
-                    }
-                    isPrevSubstring = true;
+                    j++;
+                }
+                if (isPrevSubstring)
+                {
+                    actualIndex = i == 0 ? 1 : actualIndex; // to handle first index case for first match
+                    count = isPrevNotSubString ? 0 : count;
+                    isPrevNotSubString = false;
+                    count++;
+                    i = j - 1; // -1 because in forloop one increment will happen
                 }
                 else
                 {
+                    isPrevNotSubString = true;
+                    //count = 0;
                     actualIndex++;
                     i = actualIndex - 1; // -1 because in forloop one increment will happen
-                    //count = 0;
-                    isPrevNotSubString = true;
+
                 }
+                isPrevSubstring = true;
             }
+            else
+            {
+                actualIndex++;
+                i = actualIndex - 1; // -1 because in forloop one increment will happen
+                                     //count = 0;
+                isPrevNotSubString = true;
+            }
+        }
 
             return count;
                 }
