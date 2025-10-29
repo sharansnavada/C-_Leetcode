@@ -1,19 +1,46 @@
 //JARVIS
 public class Solution {
     public int MaxRepeating(string sequence, string word) {
-        int maxCount = 0;
-        int wordLength = word.Length;
-        int sequenceLength = sequence.Length;
+        int count = 0;
+            bool isPrevSubstring = true;
+            int actualIndex = 0;
 
-        for (int i = 0; i <= sequenceLength - wordLength; i++) {
-            int count = 0;
-            while (i + count * wordLength + wordLength <= sequenceLength &&
-                   sequence.Substring(i + count * wordLength, wordLength) == word) {
-                count++;
+            for(int i = 0; i <= (sequence.Length - word.Length); i++)
+            {
+                if(sequence[i] == word[0])
+                {
+                    int j = i;
+                    for(int k = 0; k < word.Length; k++)
+                    {
+                        if(sequence[j] != word[k])
+                        {
+                            isPrevSubstring = false;
+                            break;
+                        }
+                        j++;
+                    }
+                    if (isPrevSubstring)
+                    {
+                        count++;
+                        i = j - 1; // -1 because in forloop one increment will happen
+                    }
+                    else
+                    {
+                        count = 0;
+                        actualIndex++;
+                        i = actualIndex - 1; // -1 because in forloop one increment will happen
+
+                    }
+                    isPrevSubstring = true;
+                }
+                else
+                {
+                    actualIndex++;
+                    i = actualIndex - 1; // -1 because in forloop one increment will happen
+                    count = 0;
+                }
             }
-            maxCount = Math.Max(maxCount, count);
-        }
 
-        return maxCount;
+            return count;
     }
 }
