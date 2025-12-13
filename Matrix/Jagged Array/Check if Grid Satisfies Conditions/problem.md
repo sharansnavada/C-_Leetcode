@@ -14,7 +14,9 @@ Output: true
 
 Explanation:
 
-https://assets.leetcode.com/uploads/2024/04/15/examplechanged.png
+<img width="254" height="186" alt="image" src="https://github.com/user-attachments/assets/b1cdf01b-8ae3-4415-8d4b-83d1aec8ebb6" />
+
+
 
 All the cells in the grid satisfy the conditions.
 
@@ -26,7 +28,8 @@ Output: false
 
 Explanation:
 
-https://assets.leetcode.com/uploads/2024/03/27/example21.png
+<img width="254" height="186" alt="image" src="https://github.com/user-attachments/assets/d5bd6e02-e822-4e23-be51-f32abb082471" />
+
 
 All cells in the first row are equal.
 
@@ -38,7 +41,8 @@ Output: false
 
 Explanation:
 
-https://assets.leetcode.com/uploads/2024/03/31/changed.png
+<img width="86" height="277" alt="image" src="https://github.com/user-attachments/assets/2206fe03-b964-400e-b57c-e8d06238806f" />
+
 
 Cells in the first column have different values.
 
