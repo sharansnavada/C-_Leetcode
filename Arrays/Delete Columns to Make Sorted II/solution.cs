@@ -1,0 +1,44 @@
+public class Solution {
+    public int MinDeletionSize(string[] strs)
+{
+    int rows = strs.Length;
+    int cols = strs[0].Length;
+    
+    int deletions = 0;
+
+    // decided[i] = true means strs[i] < strs[i+1] is already decided
+    bool[] decided = new bool[rows - 1];
+
+    for (int col = 0; col < cols; col++)
+    {
+        bool deleteColumn = false;
+
+        // Step 1: Check for violation in this column
+        for (int row = 0; row < rows - 1; row++)
+        {
+            if (!decided[row] && strs[row][col] > strs[row + 1][col])
+            {
+                deleteColumn = true;
+                break;
+            }
+        }
+
+        if (deleteColumn)
+        {
+            deletions++;
+            continue; // move to next column
+        }
+
+        // Step 2: Lock ordering where possible
+        for (int row = 0; row < rows - 1; row++)
+        {
+            if (!decided[row] && strs[row][col] < strs[row + 1][col])
+            {
+                decided[row] = true;
+            }
+        }
+    }
+
+    return deletions;
+}
+}
