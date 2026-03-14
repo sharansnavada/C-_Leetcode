@@ -8,13 +8,12 @@ public class Solution {
             if(stk.Count != 0){
                 if(stk.Peek() == letter){
                     stk.Pop();
+                    sb.Remove(sb.Length - 1, 1);
                     continue;
                 }
             }
                 stk.Push(letter);
-        }
-        foreach(char letter in stk.Reverse()){
-            sb.Append(letter);
+                sb.Append(letter);
         }
 
         return sb.ToString();
