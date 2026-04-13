@@ -8,8 +8,8 @@ from datetime import datetime
 # ─────────────────────────────────────────
 #  CONFIG — fill these in before running
 # ─────────────────────────────────────────
-TELEGRAM_BOT_TOKEN = "8790313705:AAEEV1VCqwDNoKCJdkOUAasJObpRaP9jRnU"
-TELEGRAM_CHAT_ID   = "710776903"
+TELEGRAM_BOT_TOKEN = ""
+TELEGRAM_CHAT_ID   = ""
 
 CHECK_INTERVAL_SECONDS = 300  # check every 5 minutes
 
