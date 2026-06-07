@@ -4,19 +4,19 @@ public class Solution {
       
         for(int i = 0; i < grid.Length; i++)
         {
-            retGrid[i] = new int[grid[0].Length];
+            retGrid[i] = new int[grid[0].Length]; //initializing every row array element
         }
       
         int row = grid.Length - 1;
         int col = 0;
         int elementsCount = 0;
-        bool bottomTriangle = true;
+        bool bottomTriangle = true; // will use it to sort (ascending or descending)
 
-        while(elementsCount != (grid.Length * grid.Length))
+        while(elementsCount != (grid.Length * grid.Length)) // tracking each element
         {
             int loopCount = 0;
             List<int> ls = new List<int>();
-            while(loopCount != 3)
+            while(loopCount != 3) // 1st to add each element to list -> 2nd to add list's element into retArr -> 3rd to set new row and col
             {
                 int tempRow = row;
                 int tempCol = col;
@@ -46,10 +46,10 @@ public class Solution {
                 }
                 else
                 {
-                    int[] newRowColData = GetRowAndCol(row, col);
+                    int[] newRowColData = GetRowAndCol(row, col); // getting new row and col for diagonal traversing.
                     row = newRowColData[0];
                     col = newRowColData[1];
-                    if(col > row) bottomTriangle = false;
+                    if(col > row) bottomTriangle = false; // false for upper triangle
                     loopCount++;
                 }
             }
