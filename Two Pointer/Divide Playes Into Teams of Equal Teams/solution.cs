@@ -3,10 +3,10 @@ public class Solution {
         if(skill.Length < 3) return skill[0] * skill[1];
         skill.Sort();
         int sum = skill.Sum();
-        if(sum % 2 != 0) return -1;
         List<int[]> ls = new List<int[]>(skill.Length / 2);
-        int targetSum = sum / ((skill.Length / 2));
-        int retSum = 0;
+        float targetSum = (float)sum / ((skill.Length / 2));
+        if(targetSum % 1 != 0) return -1;
+        long retSum = 0;
 
         for(int i = 0; i < skill.Length; i++)
         {
@@ -32,7 +32,7 @@ public class Solution {
         }
         foreach(int[] ar in ls)
         {
-            int mul = 1;
+            long mul = 1;
             foreach(int n in ar)
             {
                 mul *= n;
