@@ -4,13 +4,15 @@ public class Solution {
         deck.Sort();
         int deckIndex = 0;
         int counter = 0;
+        int oddDeckIndex = 0;
 
         for(int i = 0; i < deck.Length; i = i + 2){
             retArr[i] = deck[deckIndex++];
+            oddDeckIndex = i - 1;
             counter++;
         }
         
-        int oddDeckIndex = -1;
+        
         bool skip = true;
 
         while(counter != deck.Length){
